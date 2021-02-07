@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
   if (inFile == NULL) {
     return EXIT_FAILURE;
   }
+
   // initialize variables
 
   int number = 0;
@@ -47,36 +48,27 @@ int main(int argc, char *argv[]) {
   // read the first value in the file
   // don't look for a comma - if the file has just one value there should be no comma
 
+  char line[1028];
+  int col = 0;
+  int row = 0;
 
-
-struct csv
-{
-  /* data */
-};
-
-
-
-
-
-  char line[1096][1096];
-	char fname[20];
-    FILE *fptr = NULL; 
-    int i = 0;
-    int tot = 0;
-
-    fptr = fopen("05020004-eng.csv", "r");
-    while(fgets(line[i], 1096, fptr)) 
-	{
-        line[i][strlen(line[i]) - 1] = '\0';
-        i++;
-    }
-    tot = i;
+  while (fgets(line,sizeof(line),inFile)){
+    char *token;
+    token = strtok(line, ",");
+    printf("%s \n", token)
+    token = strtok(NULL, ",");
+    printf("%s \n", token)
+    token = strtok(NULL, ",");
+    printf("%s \n", token);
     
-    for(i = 0; i < tot; ++i)
-    {
-        printf(" %c\n", line[i]);
-    }
-    printf("\n");
+    row = row + 1;
+    // while (token != NULL)
+    // {
+    //   col = col + 1;
+    // }
+  }
+  printf("COLUMN :%d \n", col);
+  printf("ROW :%d \n", row);
   fclose(inFile);
   return EXIT_SUCCESS;
 }

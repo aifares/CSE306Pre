@@ -74,7 +74,9 @@ struct csv
     
     for(i = 0; i < tot; ++i)
     {
-        printf(" %c\n", line[i]);
+        if (line[i] == "Ref_Date"){
+          printf("%s", line[i]);
+        }
     }
     printf("\n");
   fclose(inFile);

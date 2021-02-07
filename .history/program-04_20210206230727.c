@@ -47,36 +47,20 @@ int main(int argc, char *argv[]) {
   // read the first value in the file
   // don't look for a comma - if the file has just one value there should be no comma
 
-
-
-struct csv
-{
-  /* data */
-};
-
-
-
-
-
-  char line[1096][1096];
-	char fname[20];
-    FILE *fptr = NULL; 
-    int i = 0;
-    int tot = 0;
-
-    fptr = fopen("05020004-eng.csv", "r");
-    while(fgets(line[i], 1096, fptr)) 
-	{
-        line[i][strlen(line[i]) - 1] = '\0';
-        i++;
+char c[1000];
+    FILE *fptr;
+    if ((fptr = fopen("05020004-eng.csv", "r")) == NULL) {
+        printf("Error! opening file");
+        // Program exits if file pointer returns NULL.
+        exit(1);
     }
-    tot = i;
-    
-    for(i = 0; i < tot; ++i)
-    {
-        printf(" %c\n", line[i]);
-    }
-    printf("\n");
+
+    // reads text until newline is encountered
+    fscanf(fptr, "%[^\n]", c);
+    printf("Data from the file:%s", c);
+    fclose(fptr);
+
+    return 0;
   fclose(inFile);
   return EXIT_SUCCESS;
 }

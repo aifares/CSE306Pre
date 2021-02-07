@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 
 
 
-struct csv
+struct CSV
 {
   /* data */
 };
@@ -74,7 +74,7 @@ struct csv
     
     for(i = 0; i < tot; ++i)
     {
-        printf(" %c\n", line[i]);
+        printf(" %c\n", line[i][0]);
     }
     printf("\n");
   fclose(inFile);

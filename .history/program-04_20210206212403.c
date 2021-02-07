@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /*
 
@@ -14,6 +13,7 @@ int main(int argc, char *argv[]) {
 
   FILE * inFile = NULL;
 
+  printf("argc: %d\n",argc);
 
   // remember: program name is argv[0]
   if (argc == 2) {
@@ -26,11 +26,12 @@ int main(int argc, char *argv[]) {
     printf("Incorrect number of command line arguments.\n");
   }
 
-  // triggered= if wrong number of command line args
+  // triggered if wrong number of command line args
   // or if input file could not be read
   if (inFile == NULL) {
     return EXIT_FAILURE;
   }
+
   // initialize variables
 
   int number = 0;
@@ -46,37 +47,18 @@ int main(int argc, char *argv[]) {
   // 
   // read the first value in the file
   // don't look for a comma - if the file has just one value there should be no comma
-
-
-
-struct csv
-{
-  /* data */
-};
-
-
-
-
-
-  char line[1096][1096];
-	char fname[20];
-    FILE *fptr = NULL; 
-    int i = 0;
-    int tot = 0;
-
-    fptr = fopen("05020004-eng.csv", "r");
-    while(fgets(line[i], 1096, fptr)) 
-	{
-        line[i][strlen(line[i]) - 1] = '\0';
-        i++;
-    }
-    tot = i;
+  if (fscanf(inFile,"%d",&number) == 1) {
+    printf("number: %d, sum: %d\n", number, sum);
     
-    for(i = 0; i < tot; ++i)
-    {
-        printf(" %c\n", line[i]);
+     
+    // if there multiple values we need separating commas
+    // this code does not handle whitespace: exercise left for reader :-)
+    while (fscanf(inFile,",%d",&number) == 1) {
+      printf("number: %d, sum: %d\n", number, sum);
+      
     }
-    printf("\n");
+  }
+
   fclose(inFile);
-  return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }

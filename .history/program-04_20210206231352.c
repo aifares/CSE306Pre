@@ -47,17 +47,6 @@ int main(int argc, char *argv[]) {
   // read the first value in the file
   // don't look for a comma - if the file has just one value there should be no comma
 
-
-
-struct csv
-{
-  /* data */
-};
-
-
-
-
-
   char line[1096][1096];
 	char fname[20];
     FILE *fptr = NULL; 
@@ -71,10 +60,10 @@ struct csv
         i++;
     }
     tot = i;
-    
+	printf("\n The content of the file %s  are : \n",fname);    
     for(i = 0; i < tot; ++i)
     {
-        printf(" %c\n", line[i]);
+        printf(" %c\n", line[0]);
     }
     printf("\n");
   fclose(inFile);

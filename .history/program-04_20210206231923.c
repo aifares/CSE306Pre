@@ -74,7 +74,7 @@ struct csv
     
     for(i = 0; i < tot; ++i)
     {
-        printf(" %c\n", line[i]);
+        line[i]
     }
     printf("\n");
   fclose(inFile);
