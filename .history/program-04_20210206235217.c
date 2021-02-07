@@ -77,7 +77,6 @@ struct csv
           if (ch == ','){
             printf("%s", "FOUND");
           }
-          //print char
             printf("%c", ch);
         }
     }

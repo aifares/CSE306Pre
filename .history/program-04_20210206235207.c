@@ -73,11 +73,9 @@ struct csv
         //Read file char by char
         while ((ch = fgetc(filePointer)) != EOF)
         {
-          //Check if char is == to ,
           if (ch == ','){
             printf("%s", "FOUND");
           }
-          //print char
             printf("%c", ch);
         }
     }
