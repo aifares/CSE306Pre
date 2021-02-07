@@ -73,9 +73,6 @@ struct csv
         //4
         while ((ch = fgetc(filePointer)) != EOF)
         {
-          if (ch == ','){
-            printf("%s", "FOUND");
-          }
             printf("%c", ch);
         }
     }

@@ -57,31 +57,13 @@ struct csv
 
 
 
-    FILE *filePointer;
-    char ch;
 
-    //2
-    filePointer = fopen("05020004-eng.csv", "r");
-
-    //3
-    if (filePointer == NULL)
+    FILE *file;
+    file = fopen("05020004-eng.csv", "r");
+    int c;
+    while ((c = fgetc(file)) != EOF)
     {
-        printf("File is not available \n");
+        printf("%c ",(char)c );
     }
-    else
-    {
-        //4
-        while ((ch = fgetc(filePointer)) != EOF)
-        {
-          if (ch == ','){
-            printf("%s", "FOUND");
-          }
-            printf("%c", ch);
-        }
-    }
-
-    //5
-    fclose(filePointer);
-
-    return 0;
+    return code;
 }

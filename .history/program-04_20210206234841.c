@@ -61,7 +61,7 @@ struct csv
     char ch;
 
     //2
-    filePointer = fopen("05020004-eng.csv", "r");
+    filePointer = fopen("05020004-eng", "r");
 
     //3
     if (filePointer == NULL)
@@ -73,9 +73,6 @@ struct csv
         //4
         while ((ch = fgetc(filePointer)) != EOF)
         {
-          if (ch == ','){
-            printf("%s", "FOUND");
-          }
             printf("%c", ch);
         }
     }
