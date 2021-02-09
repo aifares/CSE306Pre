@@ -54,21 +54,15 @@ int main(int argc, char *argv[]) {
         while ((ch = fgetc(filePointer)) != EOF)
         {
 
-          if (ch != ','){
+          
           strncat(line, &ch, 1);
-          }
-
-          
-          
           // Check the column number of the header.
-          // You can change ref_date to any header
           if (strcmp(line,"Ref_Date")==0){
-              // printf("%d Row Number", count);
+              printf("%d Row Number", count);
             }
           
-          // If the char is a comma and we are not in a quote print the string created so far for that entry
           if (ch == ',' && quoteChecker == 0){
-            // count is counting the columns Ref_Date is 0th col 
+            // count is counting the columns Value is 7th col 
             if (count == 0){
             printf("%s \n", line);
             }
@@ -76,13 +70,11 @@ int main(int argc, char *argv[]) {
             strcpy(line, "");
           }
            
-           // If we find open quotes set quoteChecker to 1(true) so we dont consider any commas inside of them
             if (ch == '\"' && quoteChecker == 0){
               quoteChecker = 1;
               continue;
             }
 
-            // Found closing quotes so set it equal to false, next char is either a comma or a new line
             if (ch == '\"' && quoteChecker == 1){
               quoteChecker = 0;
               continue;
@@ -94,11 +86,11 @@ int main(int argc, char *argv[]) {
 
           // Reset string of line since it's a new line
           if (ch == '\n'){
-            // count is counting the columns Value is 0th col 
-            // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
+            // count is counting the columns Value is 7th col 
             if (count == 0){
             printf("%s \n", line);
             }
+            printf("%s \n", line);
             strcpy(line, "");
             count = 0;
           }

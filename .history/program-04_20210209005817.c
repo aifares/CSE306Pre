@@ -61,12 +61,10 @@ int main(int argc, char *argv[]) {
           
           
           // Check the column number of the header.
-          // You can change ref_date to any header
           if (strcmp(line,"Ref_Date")==0){
               // printf("%d Row Number", count);
             }
           
-          // If the char is a comma and we are not in a quote print the string created so far for that entry
           if (ch == ',' && quoteChecker == 0){
             // count is counting the columns Ref_Date is 0th col 
             if (count == 0){
@@ -82,7 +80,7 @@ int main(int argc, char *argv[]) {
               continue;
             }
 
-            // Found closing quotes so set it equal to false, next char is either a comma or a new line
+            // Found closing quotes so 
             if (ch == '\"' && quoteChecker == 1){
               quoteChecker = 0;
               continue;
