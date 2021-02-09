@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
           
           // Check the column number of the header.
           // You can change ref_date to any header
-          if (strcmp(line,"Coordinate")==0){
+          if (strcmp(line,"Ref_Date")==0){
             rowCol = count;
             }
           
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
                 printf("%s \n", line);    
             }
             count = count + 1;
-            strcpy(line, "");
+            //strcpy(line, "");
           }
            
            // If we find open quotes set quoteChecker to 1(true) so we dont consider any commas inside of them
@@ -102,11 +102,11 @@ int main(int argc, char *argv[]) {
 
           // Reset string of line since it's a new line
           if (ch == '\n'){
-    
+            printf("%s", line);
             // count is counting the columns Value is 0th col
             // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
             if (count == rowCol){
-            printf("%s", line);
+            printf("%s", "Hello");
             }
             strcpy(line, "");
             count = 0;

@@ -35,8 +35,8 @@ int main(int argc, char *argv[]) {
     FILE *filePointer;
     char ch;
     int count = 0;
+    int number = 1;
     char line[4096] = "";
-    int rowCol = 0;
 
     // This is a boolean to check for double quotes 0 = false 1 = true
     int quoteChecker = 0;
@@ -53,32 +53,24 @@ int main(int argc, char *argv[]) {
         //Read file char by char
         while ((ch = fgetc(filePointer)) != EOF)
         {
-          
-         
-         //If we are in quotes add commas to string
-          if (quoteChecker==1){
+
+          if (ch != ','){
           strncat(line, &ch, 1);
-          }
-          else{
-            // Don't add commas if we are not in quotes
-            if (ch != ','){
-              strncat(line, &ch, 1);
-            }
           }
 
           
           
           // Check the column number of the header.
           // You can change ref_date to any header
-          if (strcmp(line,"Coordinate")==0){
-            rowCol = count;
+          if (strcmp(line,"CONTENT")==0){
+              // printf("%d Row Number", count);
             }
           
           // If the char is a comma and we are not in a quote print the string created so far for that entry
           if (ch == ',' && quoteChecker == 0){
             // count is counting the columns Ref_Date is 0th col 
-            if (count == rowCol){
-                printf("%s \n", line);    
+            if (count == 3){
+            printf("%s \n", line);
             }
             count = count + 1;
             strcpy(line, "");
@@ -102,11 +94,10 @@ int main(int argc, char *argv[]) {
 
           // Reset string of line since it's a new line
           if (ch == '\n'){
-    
-            // count is counting the columns Value is 0th col
+            // count is counting the columns Value is 0th col 
             // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
-            if (count == rowCol){
-            printf("%s", line);
+            if (count == 3){
+            printf("%s \n", line);
             }
             strcpy(line, "");
             count = 0;

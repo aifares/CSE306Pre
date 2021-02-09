@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
           
           // Check the column number of the header.
           // You can change ref_date to any header
-          if (strcmp(line,"Coordinate")==0){
+          if (strcmp(line,"Value")==0){
             rowCol = count;
             }
           
