@@ -3,11 +3,8 @@
 #include <string.h>
 
 /*
-
   This program shows how to read from a file and write to a file.
-
   argv[1] is the name of the input file
-
 */
 
 int main(int argc, char *argv[]) {
@@ -35,9 +32,8 @@ int main(int argc, char *argv[]) {
     FILE *filePointer;
     char ch;
     int count = 0;
-    char buffer[4096] = "";
     char line[4096] = "";
-    int rowCol = 0;
+    int rowCol = -1;
 
     // This is a boolean to check for double quotes 0 = false 1 = true
     int quoteChecker = 0;
@@ -59,21 +55,19 @@ int main(int argc, char *argv[]) {
          //If we are in quotes add commas to string
           if (quoteChecker==1){
           strncat(line, &ch, 1);
-          strncat(buffer, &ch, 1);
           }
           else{
             // Don't add commas if we are not in quotes
             if (ch != ','){
               strncat(line, &ch, 1);
-              strncat(buffer, &ch, 1);
             }
           }
 
           
           
           // Check the column number of the header.
-          // You can change ref_date to any header
-          if (strcmp(line,"Value")==0){
+          // You can change gitto any header
+          if (strcmp(line,"Coordinate")==0){
             rowCol = count;
             }
           
@@ -81,7 +75,7 @@ int main(int argc, char *argv[]) {
           if (ch == ',' && quoteChecker == 0){
             // count is counting the columns Ref_Date is 0th col 
             if (count == rowCol){
-                printf("%s \n", line);    
+                printf("%s %s \n", line);    
             }
             count = count + 1;
             strcpy(line, "");
@@ -110,10 +104,8 @@ int main(int argc, char *argv[]) {
             // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
             if (count == rowCol){
             printf("%s", line);
-            printf("%s", buffer);
             }
             strcpy(line, "");
-            strcpy(buffer, "");
             count = 0;
           }
 
