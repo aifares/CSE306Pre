@@ -234,8 +234,7 @@ int getRecords(char* Header, char*value){
 
 int main(int argc, char *argv[]) {
 
-    filePointer = fopen("05020004-eng.csv", "r");
-
+    filePointer = fopen(argv[argc - 1] , "r");
   
     if (filePointer == NULL)
     {
