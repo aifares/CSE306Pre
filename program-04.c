@@ -21,8 +21,14 @@ int quoteChecker = 0;
 //Prints the number of header (fields) in the file.
 int number_of_fields(){
   int numberOfHeaders = 1;
+  int fieldQuotes = -1;
+  char headChar;
   while ((ch = fgetc(filePointer)) != '\n'){
-    if (ch == ','){
+    headChar = ch;
+    if (ch == '\"'){
+      fieldQuotes = fieldQuotes * -1;
+    }
+    if (ch == ',' && fieldQuotes == -1){
       numberOfHeaders += 1;
     }
   }
@@ -158,8 +164,6 @@ int minMaxMean(char* Header , int operation){
 int getRecords(char* Header, char*value){
   while ((ch = fgetc(filePointer)) != EOF)
       {
-        
-
         strncat(buffer, &ch, 1);
         //If we are in quotes add commas to string
         if (quoteChecker==1){
@@ -171,13 +175,11 @@ int getRecords(char* Header, char*value){
             strncat(line, &ch, 1);
           }
         }
-
         // Check the column number of the header.
         // You can change gitto any header
         if (strcmp(line,Header)==0){
           rowCol = count;
         }
-        
         // If the char is a comma and we are not in a quote print the string created so far for that entry
         if (ch == ',' && quoteChecker == 0){
           // count is counting the columns Ref_Date is 0th col 
@@ -188,8 +190,7 @@ int getRecords(char* Header, char*value){
           }
           count = count + 1;
           strcpy(line, "");
-        }
-          
+        }  
           // If we find open quotes set quoteChecker to 1(true) so we dont consider any commas inside of them
           if (ch == '\"' && quoteChecker == 0){
             quoteChecker = 1;
@@ -234,20 +235,18 @@ int getRecords(char* Header, char*value){
 
 int main(int argc, char *argv[]) {
 
-    filePointer = fopen("05020004-eng.csv", "r");
-
+    filePointer = fopen(argv[argc - 1] , "r");
   
-    if (filePointer == NULL)
-    {
+    if (filePointer == NULL){
         printf("File is not available \n");
+        return EXIT_FAILURE;
     }
-    else
-    {
+    else{
       //Checking the comand line argument used.
       if (argc == 3){
         if(strcmp(argv[1],"-f") == 0){
-          //number_of_fields();
-          getRecords("Value", "100.0");
+          number_of_fields();
+          //getRecords("Value", "100.0");
         }
         else if(strcmp(argv[1],"-r") == 0){
           number_of_data();
