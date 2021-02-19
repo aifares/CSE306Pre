@@ -159,7 +159,7 @@ int getRecords(char* Header, char*value){
   while ((ch = fgetc(filePointer)) != EOF)
       {
         
-        
+
         strncat(buffer, &ch, 1);
         //If we are in quotes add commas to string
         if (quoteChecker==1){
@@ -214,6 +214,7 @@ int getRecords(char* Header, char*value){
 
             if (strcmp(line, value) == 0)
             {
+              printf("FOUND");
               bufferChecker = 1;  
              }
           }
@@ -246,7 +247,7 @@ int main(int argc, char *argv[]) {
       if (argc == 3){
         if(strcmp(argv[1],"-f") == 0){
           number_of_fields();
-          //getRecords("Value", "");
+          getRecords("Value", "100.0");
         }
         else if(strcmp(argv[1],"-r") == 0){
           number_of_data();

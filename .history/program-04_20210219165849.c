@@ -159,7 +159,7 @@ int getRecords(char* Header, char*value){
   while ((ch = fgetc(filePointer)) != EOF)
       {
         
-        
+
         strncat(buffer, &ch, 1);
         //If we are in quotes add commas to string
         if (quoteChecker==1){
