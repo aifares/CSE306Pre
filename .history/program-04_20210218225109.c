@@ -107,8 +107,7 @@ int minMaxMean(char* Header , int operation){
 
         // Reset string of line since it's a new line
         if (ch == '\n'){
-            int size = strlen(line);
-            line[size - 2] = '\0';
+          
           // count is counting the columns Value is 0th col
           // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
           if (count == rowCol){
