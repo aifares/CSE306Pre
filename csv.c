@@ -44,7 +44,7 @@ int number_of_data(){
       records += 1;
     }
   }
-  printf("Total Records %d \n", records);
+  printf("%d\n", records);
   return 0;
 }
 
@@ -145,30 +145,16 @@ int minMaxMean(char* Header , int operation){
 
   }
   if(operation == 0){
-    if(minimum == -1000000000){
-      printf("%s\n","Non Numeric Data");
-      return EXIT_FAILURE;
-    }
-    else{
-        printf("%d\n",minimum);
-    }
+    printf("%d\n",minimum);
   }
   else if(operation == 1){
-    if(minimum == 1000000000){
-      printf("%s\n","Non Numeric Data");
-      return EXIT_FAILURE;
-    }
-    else{
-      printf("%d\n",maximum);
-    }
+    printf("%d\n",maximum);
   }
   else if(operation == 2){
-    if(meanCount == -1){
-      printf("%s","No Numeric Data\n");
-      return EXIT_FAILURE;
-    }
+    //printf("%f\n", meanTotal);
+    //printf("%d\n", meanCount);
     mean = meanTotal/meanCount;
-    printf("%f\n",mean);
+    printf("%.2f\n",mean);
   }
   return 0;
 }
@@ -225,7 +211,7 @@ int getRecords(char* Header, char*value){
           // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
           if (count == rowCol){
             int size = strlen(line);
-            line[size - 1] = '\0';
+            line[size - 2] = '\0';
             //printf("%s", line);
 
             if (strcmp(line, value) == 0)
