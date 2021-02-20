@@ -247,7 +247,7 @@ int main(int argc, char *argv[]) {
       if (argc == 3){
         if(strcmp(argv[1],"-f") == 0){
           //number_of_fields();
-          getRecords("Value", "100.0");
+          getRecords("Value", "");
         }
         else if(strcmp(argv[1],"-r") == 0){
           number_of_data();

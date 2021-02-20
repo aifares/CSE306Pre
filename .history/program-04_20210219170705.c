@@ -164,8 +164,11 @@ int minMaxMean(char* Header , int operation){
 int getRecords(char* Header, char*value){
   while ((ch = fgetc(filePointer)) != EOF)
       {
+<<<<<<< HEAD
         
         
+=======
+>>>>>>> 43888101cafc4e879ca677df31c77ac7f81fcaeb
         strncat(buffer, &ch, 1);
         //If we are in quotes add commas to string
         if (quoteChecker==1){
@@ -246,8 +249,8 @@ int main(int argc, char *argv[]) {
       //Checking the comand line argument used.
       if (argc == 3){
         if(strcmp(argv[1],"-f") == 0){
-          //number_of_fields();
-          getRecords("Value", "100.0");
+          number_of_fields();
+          //getRecords("Value", "");
         }
         else if(strcmp(argv[1],"-r") == 0){
           number_of_data();

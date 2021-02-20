@@ -246,8 +246,8 @@ int main(int argc, char *argv[]) {
       //Checking the comand line argument used.
       if (argc == 3){
         if(strcmp(argv[1],"-f") == 0){
-          //number_of_fields();
-          getRecords("Value", "100.0");
+          number_of_fields();
+          getRecords("Value", "");
         }
         else if(strcmp(argv[1],"-r") == 0){
           number_of_data();
