@@ -145,14 +145,28 @@ int minMaxMean(char* Header , int operation){
 
   }
   if(operation == 0){
-    printf("%d\n",minimum);
+    if(minimum == -1000000000){
+      printf("%s\n","Non Numeric Data");
+      return EXIT_FAILURE;
+    }
+    else{
+        printf("%d\n",minimum);
+    }
   }
   else if(operation == 1){
-    printf("%d\n",maximum);
+    if(minimum == 1000000000){
+      printf("%s\n","Non Numeric Data");
+      return EXIT_FAILURE;
+    }
+    else{
+      printf("%d\n",maximum);
+    }
   }
   else if(operation == 2){
-    //printf("%f\n", meanTotal);
-    //printf("%d\n", meanCount);
+    if(meanCount == -1){
+      printf("%s","No Numeric Data\n");
+      return EXIT_FAILURE;
+    }
     mean = meanTotal/meanCount;
     printf("%f\n",mean);
   }
