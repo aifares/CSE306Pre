@@ -213,7 +213,8 @@ int getRecords(char* Header, char*value){
           // If the entry is the last of the line there is no comma it begins a new line so we check for a new line instead of comma
           if (count == rowCol){
             int size = strlen(line);
-            line[size - 2] = '\0';
+            line[size - 1] = '\0';
+            //printf("%s", line);
 
             if (strcmp(line, value) == 0)
             {
@@ -246,8 +247,8 @@ int main(int argc, char *argv[]) {
       //Checking the comand line argument used.
       if (argc == 3){
         if(strcmp(argv[1],"-f") == 0){
-          //number_of_fields();
-          getRecords("Value", "100.0");
+          number_of_fields();
+          //getRecords("Value", "100.0");
         }
         else if(strcmp(argv[1],"-r") == 0){
           number_of_data();
@@ -263,6 +264,11 @@ int main(int argc, char *argv[]) {
           }
           else if(strcmp(argv[2],"-mean") == 0){
             minMaxMean(argv[3], 2);
+          }
+          else if(strcmp(argv[2],"-records") ==0){
+            printf("%s", argv[3]);
+            printf("%s", argv[4]);
+            getRecords(argv[3],argv[4]);
           }
         }
       }
